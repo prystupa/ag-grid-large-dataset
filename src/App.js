@@ -1,5 +1,6 @@
-import React from 'react';
-import {AgGridReact} from 'ag-grid-react';
+import React from "react";
+import {AgGridReact} from "ag-grid-react";
+import {connect} from "react-redux";
 import "ag-grid/dist/styles/ag-grid.css";
 import "ag-grid/dist/styles/ag-theme-bootstrap.css";
 
@@ -12,6 +13,9 @@ class App extends React.Component {
             <div className="ag-theme-bootstrap" style={{height: '100%'}}>
                 <AgGridReact rowData={rows}
                              columnDefs={[{
+                                 headerName: 'Index',
+                                 field: 'index'
+                             }, {
                                  headerName: 'Name',
                                  field: 'name'
                              }, {
@@ -26,4 +30,10 @@ class App extends React.Component {
     }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return ({
+        rows: state
+    });
+};
+
+export default connect(mapStateToProps, null)(App);
