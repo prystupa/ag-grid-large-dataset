@@ -4,5 +4,9 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function buildRows() {
+    return new Array(1500).fill({});
+}
+
+ReactDOM.render(<App rows={buildRows()} />, document.getElementById('root'));
 registerServiceWorker();
