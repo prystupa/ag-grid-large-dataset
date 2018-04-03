@@ -55,6 +55,7 @@ function buildLoadedRows(firstRow, lastRow) {
 function populateRowsEpic(action$, store) {
 
     return action$.ofType(ON_VIEWPORT_CHANGED)
+        .debounceTime(250)
         .flatMap(({args: {firstRow, lastRow}}) => {
             const rows = store.getState();
             if (fullyLoaded(rows, firstRow, lastRow)) {
