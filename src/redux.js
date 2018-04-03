@@ -35,7 +35,7 @@ function fullyLoaded(rows, firstRow, lastRow) {
         return true;
     }
 
-    return rows[firstRow]._isLoaded && rows[lastRow]._isLoaded;
+    return rows.slice(firstRow, lastRow + 1).every(row => row._isLoaded);
 }
 
 function buildLoadedRows(firstRow, lastRow) {
