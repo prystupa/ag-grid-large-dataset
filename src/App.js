@@ -7,6 +7,10 @@ import "ag-grid/dist/styles/ag-theme-bootstrap.css";
 import {onViewportChanged} from "./redux";
 
 
+function getRowNodeId(row) {
+    return row.index;
+}
+
 class App extends React.Component {
     render() {
         const {rows, onViewportChanged} = this.props;
@@ -29,6 +33,8 @@ class App extends React.Component {
         return (
             <div className="ag-theme-bootstrap" style={{height: '100%'}}>
                 <AgGridReact rowData={rows}
+                             deltaRowDataMode={true}
+                             getRowNodeId={getRowNodeId}
                              columnDefs={columnDefs}
                              onViewportChanged={onViewportChanged}
                 />
